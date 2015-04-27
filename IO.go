@@ -1,9 +1,11 @@
 package main
-
+import "net"
 func readFromSocket(conn net.Conn, rMessage chan string) {
 	var buff [512]byte
+	var n int
+	var err error
 	for {
-		n, err := conn.Read(buff[0:])
+		n, err = conn.Read(buff[0:])
 		if err != nil {
 			return
 		}
